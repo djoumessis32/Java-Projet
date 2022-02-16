@@ -77,7 +77,7 @@ public class Machine2 implements ActionListener {
 		JButton[] tabBtns = {lebtn1, lebtn2, lebtn3, lebtn4};
 		ImageIcon[][] tabIcons = {TABIMAGES1, TABIMAGES2, TABIMAGES3, TABIMAGES4};
 		fen.setSize(300, 800);
-		handleEvent(tabBtns, tabIcons);
+		Reception(tabBtns, tabIcons);
 	}
     @Override
 	public void actionPerformed(ActionEvent e) {
@@ -85,27 +85,27 @@ public class Machine2 implements ActionListener {
 			case 1:
 				compteur1 = (compteur1 + 1)% tab.length;
 				btn.setIcon(tab[compteur1]);
-				emitEvent(compteur1);
+				Envoi(compteur1);
 				break;
 			case 2:
 				compteur2 = (compteur2 + 1)% tab.length;
 				btn.setIcon(tab[compteur2]);
-				emitEvent(compteur2);
+				Envoi(compteur2);
 				break;
 			case 3:
 				compteur3 = (compteur3 + 1)% tab.length;
 				btn.setIcon(tab[compteur3]);
-				emitEvent(compteur3);
+				Envoi(compteur3);
 				break;
 			case 4:
 				compteur4 = (compteur4 + 1)% tab.length;
 				btn.setIcon(tab[compteur4]);
-				emitEvent(compteur4);
+				Envoi(compteur4);
 				break;
 		}
     }
-    void emitEvent(int compteur) {
-		System.out.println("------onclick------");
+    void Envoi(int compteur) {
+		System.out.println("Envoi");
 		InetAddress address;
 		DatagramSocket socketUDP; // for sending message
 		DatagramPacket message; // get an instance of message
@@ -145,7 +145,7 @@ public class Machine2 implements ActionListener {
 		}
 		catch (IOException err) {
 			// TODO: handle exception
-			System.out.println("Problème sur la reception ou l'envie de message");
+			System.out.println("Problème sur la reception ou l'envoi du message");
 		}
 		catch (NumberFormatException err) {
 			// TODO: handle exception
@@ -153,7 +153,7 @@ public class Machine2 implements ActionListener {
 		}
 	}
 
-    private static void handleEvent(JButton[] tabBtns, ImageIcon[][] tabsIcon) {
+    private static void Reception(JButton[] tabBtns, ImageIcon[][] tabsIcon) {
 		DatagramSocket socketUDP;
 		DatagramPacket message;
 		byte[] tampon;
@@ -209,7 +209,7 @@ public class Machine2 implements ActionListener {
 			}
 			catch (IOException e) {
 				// TODO: handle exception
-				System.out.println("Probl�me sur la reception ou l'envie de message");
+				System.out.println("Probleme sur la reception ou l'envie de message");
 			}
 		}
 	}
